@@ -3,325 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bakery Order Form</title>
-    <link rel="stylesheet" href="styles.css">
-   
-    <style>
-
-    h1,h2,h3,h4,h5,h6 {font-family:"Georgia",Tahoma, Arial,serif,sans-serif; letter-spacing:5px}
-        
-    body {
-    font-family: "Tahoma", Helvetica,Arial, sans-serif;
-    background-color: #fffff;
-    background-image: url('image/bg2.jpg'); 
-    width:100%;
-    background-size: cover;
-    background-position: center;
-    margin: 0;
-    padding: 20px;
+    <title>Order a Cake</title>
+    <link rel="stylesheet" href="combined-style.css">
+    <style >
+       body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
 }
 
-.order-form-container {
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: #ffffff;
+.form-container {
+    max-width: 600px;
+    margin: 50px auto;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-    text-align: center;
     color: #a52a2a;
+    text-align: center;
 }
 
-fieldset {
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 8px;
-}
-
-legend {
-    padding: 0 10px;
-    font-weight: bold;
+h2 {
     color: #8068d6;
-}
-
-.form-group {
-    margin-bottom: 15px;
+    margin-top: 30px;
 }
 
 label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
     display: block;
-    margin-bottom: 5px;
-    color: #444;
 }
 
 input[type="text"],
-input[type="tel"],
-input[type="email"],
-input[type="datetime-local"],
-input[type="time"],
 input[type="number"],
-input[type="file"],
-textarea,
-select {
+input[type="date"],
+select,
+textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1em;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
 }
 
 textarea {
-    resize: vertical;
-    min-height: 80px;
+    height: 80px;
 }
 
-.radio-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.radio-group input[type="radio"] {
-    margin-right: 5px;
-}
-
-button[type="submit"] {
-    display: block;
+button {
     width: 100%;
-    padding: 12px;
-    background-color: #8068d6;
+    padding: 10px;
+    background-color: #a52a2a;
     color: #ffffff;
     border: none;
-    border-radius: 4px;
-    font-size: 1.2em;
+    border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
 }
 
-button[type="submit"]:hover {
-    background-color: #a52a2a;
+button:hover {
+    background-color: #8b4513;
 }
 
-.name-container {
-    display: flex;
-    gap: 20px;
+#cake-type {
     margin-bottom: 20px;
 }
 
-.name-field {
-    flex: 1;
+#cheesecake-form button {
+    background-color: #a52a2a;
+}
+
+#cheesecake-form button:hover {
+    background-color: #8b4513;
+}
+
+#tiramisu-form button {
+    background-color: #8068d6;
+}
+
+#tiramisu-form button:hover {
+    background-color: #6a52a3;
 }
 
     </style>
+
+    
+    <script>
+        function showForm(cakeType) {
+            document.getElementById('cheesecake-form').style.display = cakeType === 'cheesecake' ? 'block' : 'none';
+            document.getElementById('tiramisu-form').style.display = cakeType === 'tiramisu' ? 'block' : 'none';
+        }
+    </script>
 </head>
 <body>
-    <div class="order-form-container">
-        <h1>Specialty Cake Order Form</h1>
-        <br>
-        <form action="/submit-order" method="POST">
+    <div class="form-container">
+        <h1>Order a Cake</h1>
+        <label for="cake-type">Choose the type of cake you'd like to order:</label>
+        <select id="cake-type" name="cake_type" onchange="showForm(this.value)">
+            <option value="" disabled selected>Select a cake</option>
+            <option value="cheesecake">Cheesecake</option>
+            <option value="tiramisu">Tiramisu</option>
+        </select>
 
-            <!-- General Information Section -->
-            <fieldset>
-                <legend>General Information</legend>
+        <!-- Cheesecake Form -->
+        <form id="cheesecake-form" style="display:none;" action="#" method="POST">
+            <h2>Cheesecake Order</h2>
+            <label for="occasion">What occasion is this for?</label>
+            <input type="text" id="occasion" name="occasion" required>
 
-                <!-- Name Fields -->
-                <div class="name-container">
-                    <div class="name-field">
-                        <label for="first-name">First Name:</label>
-                        <input type="text" id="first-name" name="first-name" required>
-                    </div>
-                    <div class="name-field">
-                        <label for="last-name">Last Name:</label>
-                        <input type="text" id="last-name" name="last-name" required>
-                    </div>
-                </div>
+            <label for="servings">How many people will be served?</label>
+            <input type="number" id="servings" name="servings" min="1" required>
 
-                <!-- Contact Information -->
-                <div class="form-group">
-                    <label for="phone">Phone Number:</label>
-                    <input type="tel" id="phone" name="phone" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email Address:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="event-date">Event Date and Time:</label>
-                    <input type="datetime-local" id="event-date" name="event-date" required>
-                </div>
-                <div class="form-group">
-                    <label for="servings">Expected number of servings:</label>
-                    <input type="number" id="guests" name="guests" min="1" required>
-                </div>
-                <div class="form-group">
-                    <label for="delivery-pickup">Delivery or Pickup:</label>
-                    <select id="delivery-pickup" name="delivery-pickup" required>
-                        <option value="delivery">Delivery</option>
-                        <option value="pickup">Pickup</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="delivery-time">Delivery Time:</label>
-                    <input type="time" id="delivery-time" name="delivery-time">
-                </div>
-                <div class="form-group">
-                    <label for="address">Delivery Address (if applicable):</label>
-                    <textarea id="address" name="address"></textarea>
-                </div>
-            </fieldset>
+            <label for="flavor">Choose your cheesecake flavor:</label>
+            <select id="flavor" name="flavor" required>
+                <option value="chocolate">Chocolate</option>
+                <option value="pina_colada">Pina Colada</option>
+                <option value="strawberry">Strawberry</option>
+                <option value="blueberry">Blueberry</option>
+                <option value="coconut">Coconut</option>
+                <option value="seasonal">Seasonal</option>
+            </select>
 
-            <!-- Cake Selection and Description Section -->
-            <fieldset>
-                <legend>Cake Selection and Description</legend>
+            <label for="crust">Choose your crust:</label>
+            <select id="crust" name="crust" required>
+                <option value="graham">Graham Cracker</option>
+                <option value="oreo">Oreo</option>
+                <option value="nut_based">Nut-Based</option>
+                <option value="gluten_free">Gluten-Free</option>
+            </select>
 
-                <div class="form-group">
-                    <label for="cake-type">Type of Specialty Cake:</label>
-                    <select id="cake-type" name="cake-type" required>
-                        <option value="wedding-cake">Wedding Cake</option>
-                        <option value="birthday-cake">Birthday Cake</option>
-                        <option value="gourmet-cake">Gourmet Cake</option>
-                        <option value="celebratory-cake">Celebratory Cake</option>
-                    </select>
-                </div>
+            <label for="toppings">Additional toppings or swirls:</label>
+            <textarea id="toppings" name="toppings"></textarea>
 
-                <div class="form-group">
-                    <label for="occasion">Occasion or Event:</label>
-                    <input type="text" id="occasion" name="occasion" required>
-                </div>
-                <div class="form-group">
-                    <label for="design-theme">Theme, Design, or Color:</label>
-                    <textarea id="design-theme" name="design-theme"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="upload-design">Upload Design Reference:</label>
-                    <input type="file" id="upload-design" name="upload-design">
-                </div>
-                <div class="form-group">
-                    <label for="cake-size">Cake Size or Dimensions:</label>
-                    <input type="text" id="cake-size" name="cake-size" required>
-                </div>
-            </fieldset>
+            <label for="bake">Baked or No-Bake:</label>
+            <select id="bake" name="bake" required>
+                <option value="baked">Baked</option>
+                <option value="no_bake">No-Bake</option>
+            </select>
 
-            <!-- Preferences Section -->
-            <fieldset>
-                <legend>Preferences</legend>
+            <label for="dietary">Dietary restrictions or allergies:</label>
+            <textarea id="dietary" name="dietary"></textarea>
 
-                <div class="form-group">
-                    <label style="color: #a52a2a;">Base Flavor:</label>
-                    <div class="radio-group">
-                        <input type="radio" id="base-vanilla" name="base-flavor" value="vanilla" required>
-                        <label for="base-vanilla">Vanilla</label>
-                        <input type="radio" id="base-almond" name="base-flavor" value="almond">
-                        <label for="base-almond">Almond</label>
-                        <input type="radio" id="base-orange" name="base-flavor" value="orange">
-                        <label for="base-orange">Orange</label>
-                        <input type="radio" id="base-lemon" name="base-flavor" value="lemon">
-                        <label for="base-lemon">Lemon</label>
-                        <input type="radio" id="base-pistachio" name="base-flavor" value="pistachio">
-                        <label for="base-pistachio">Pistachio</label>
-                        
-                        <input type="radio" id="base-other" name="base-flavor" value="other"
-                        onclick="document.getElementById('other-text1').style.display = 'inline';">
-                        <label for="base-other">Other</label><br>
-                        <input type="text" id="other-text1" name="other" placeholder="Please specify" style="display:none;">
+            <label for="date">Desired delivery/pickup date:</label>
+            <input type="date" id="date" name="date" required>
 
-                    </div>
-                </div>
+            <label for="decorations">Special decorations or messages:</label>
+            <textarea id="decorations" name="decorations"></textarea>
 
-                <div class="form-group">
-                    <label style="color: #a52a2a;">Filling Flavor:</label>
-                    <div class="radio-group">
-                        <input type="radio" id="filling-chocolate" name="filling-flavor" value="chocolate" required>
-                        <label for="filling-chocolate">Chocolate</label>
-                        <input type="radio" id="filling-vanilla" name="filling-flavor" value="vanilla">
-                        <label for="filling-vanilla">Vanilla</label>
-                        <input type="radio" id="filling-cream-cheese" name="filling-flavor" value="cream-cheese">
-                        <label for="filling-cream-cheese">Cream Cheese</label>
-                        <input type="radio" id="filling-buttercream" name="filling-flavor" value="buttercream">
-                        <label for="filling-buttercream">Buttercream</label>
-                        <input type="radio" id="filling-other" name="filling-flavor" value="other"
-                        onclick="document.getElementById('other-text2').style.display = 'inline';">
-                        <label for="filling-other">Other</label><br>
-                        <input type="text" id="other-text2" name="other" placeholder="Please specify" style="display:none;">
-                    </div>
-                </div>
+            <button type="submit">Place Cheesecake Order</button>
+        </form>
 
-                <div class="form-group">
-                    <label style="color: #a52a2a;">Frosting Flavor:</label>
-                    <div class="radio-group">
-                        <input type="radio" id="frosting-chocolate" name="frosting-flavor" value="chocolate" required>
-                        <label for="frosting-chocolate">Chocolate</label>
-                        <input type="radio" id="frosting-cream-cheese" name="frosting-flavor" value="cream-cheese">
-                        <label for="frosting-cream-cheese">Cream Cheese</label>
-                        <input type="radio" id="frosting-buttercream" name="frosting-flavor" value="buttercream">
-                        <label for="frosting-buttercream">Buttercream</label>
-                        <input type="radio" id="frosting-fondant" name="frosting-flavor" value="fondant">
-                        <label for="frosting-fondant">Fondant</label>
-                        <input type="radio" id="frosting-other" name="frosting-flavor" value="other"
-                        onclick="document.getElementById('other-text3').style.display = 'inline';">
-                        <label for="frosting-other">Other</label>
-                        <input type="text" id="other-text3" name="other" placeholder="Please specify" style="display:none;">
-                    </div>
-                </div>
+        <!-- Tiramisu Form -->
+        <form id="tiramisu-form" style="display:none;" action="#" method="POST">
+            <h2>Tiramisu Order</h2>
+            <label for="occasion">What occasion is this for?</label>
+            <input type="text" id="occasion" name="occasion" required>
 
-                <div class="form-group">
-                    <label for="ingredients">Specific Ingredients to Include or Avoid:</label>
-                    <textarea id="ingredients" name="ingredients"></textarea>
-                </div>
+            <label for="servings">How many people will be served?</label>
+            <input type="number" id="servings" name="servings" min="1" required>
 
-                <div class="form-group">
-                    <label for="dietary">Dietary Restrictions or Allergies:</label>
-                    <textarea id="dietary" name="dietary"></textarea>
-                </div>
-            </fieldset>
+            <label for="variation">Choose your tiramisu variation:</label>
+            <select id="variation" name="variation" required>
+                <option value="classic">Classic</option>
+                <option value="chocolate">Chocolate</option>
+                <option value="fruit_infused">Fruit-Infused</option>
+                <option value="liqueur">Different Liqueur</option>
+            </select>
 
-            <!-- Budget Section -->
-            <fieldset>
-                <legend>Budget</legend>
+            <label for="coffee_strength">Preferred coffee strength:</label>
+            <select id="coffee_strength" name="coffee_strength" required>
+                <option value="mild">Mild</option>
+                <option value="moderate">Moderate</option>
+                <option value="strong">Strong</option>
+            </select>
 
-                <div class="form-group">
-                    <label for="budget">Select Your Budget Range:</label><br>
-                    <select id="budget" name="budget"required>
-                        <option value="$100.00 - $300.00">$100.00 - $300.00</option>
-                        <option value="$300.01 - $500.00">$300.01 - $500.00</option>
-                        <option value="$500.01 - $700.00">$500.01 - $700.00</option>
-                        <option value="$700.01 and above">$700.01 and above</option>
-                    </select>
-                </div>
+            <label for="layers">Additional layers or fillings:</label>
+            <textarea id="layers" name="layers"></textarea>
 
-                <div class="form-group">
-                    <label for="cost-considerations">Specific Cost Considerations:</label>
-                    <textarea id="cost-considerations" name="cost-considerations"></textarea>
-                </div>
-            </fieldset>
+            <label for="dietary">Dietary restrictions or allergies:</label>
+            <textarea id="dietary" name="dietary"></textarea>
 
-            <!-- Special Requests and Customization Section -->
-            <fieldset>
-                <legend>Special Requests and Customization</legend>
+            <label for="date">Desired delivery/pickup date:</label>
+            <input type="date" id="date" name="date" required>
 
-                <div class="form-group">
-                    <label for="customization">Customizations or Special Decorations:</label>
-                    <textarea id="customization" name="customization"></textarea>
-                </div>
+            <label for="decorations">Special decorations or messages:</label>
+            <textarea id="decorations" name="decorations"></textarea>
 
-                <div class="form-group">
-                    <label for="upload-customization">Upload Custom Design or Reference:</label>
-                    <input type="file" id="upload-customization" name="upload-customization">
-                </div>
-
-                <div class="form-group">
-                    <label for="packaging">Specific Packaging or Presentation Needs:</label>
-                    <textarea id="packaging" name="packaging"></textarea>
-                </div>
-            </fieldset>
-
-            <!-- Submit Button -->
-            <div class="form-group">
-                <button type="submit"><a href="mailto:sweetdazzletreatz@gmail.com" target="_blank">Submit Order </a></button>
-            </div>
+            <button type="submit">Place Tiramisu Order</button>
         </form>
     </div>
 </body>
