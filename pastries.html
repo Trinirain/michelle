@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="author" content="Michelle Showers">
 <meta name="description" content="Sweetdazzletreatz Food Catering Services">
-<meta name="keywords" content="weddings, birthdays, cakes, desserts, celebrations,pastries">
+<meta name="keywords" content="desserts, celebrations,pastries, breads, brunch box, corissant, party">
 
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -186,8 +186,6 @@ footer {
     bottom: 0;
 }
 
-
-
 .social-media {
     display: flex;
     gap: 20px;
@@ -204,27 +202,13 @@ footer {
 }
 
 
+
 @media screen and (max-width: 600px) {
   .navbar a{ float:none;
   display:block; 
   flex-direction: column;
   width: 100%;
   }
-
-/* Responsive adjustments */
-@media (max-width: 600px) {
-    table {
-        width: 100%; /* Ensure table adapts to smaller screens */
-    }
-}
-
-
-@media screen and (min-width: 601px) {
-  
-    font-size:auto;
-  }
-
-
 
   .dropdown-content {
         min-width: 100%;
@@ -263,12 +247,12 @@ footer {
 
 <div class="navbar" style="justify-content: left; margin: 10px 20px 25px 60px;padding-left: 40px"><strong>
  
-<a href="index.html" class="w3-bar-item w3-button w3-pink "><i class="fa fa-home"></i>&nbsp; Home</a>&nbsp;
+<a href="index.html" class="w3-bar-item w3-button"><i class="fa fa-home"></i>&nbsp; Home</a>&nbsp;
 <a href="about.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i>&nbsp; About</a>&nbsp;
 <a href="services.html" class="w3-bar-item w3-button"><i class="fa fa-clone"></i>&nbsp; Services</a>&nbsp;
 
-  <div class="dropdown">
-    <button class="dropbtn " style="font-size: 17px;"><i class="fa fa-list"></i>&nbsp;  Order&nbsp;
+  <div class="dropdown w3-pink">
+    <button class="dropbtn" style="font-size: 17px; color: white;"><i class="fa fa-list"></i>&nbsp;  Order&nbsp;
       <i class="fa fa-caret-down"></i>
           </button>
     </strong>
@@ -278,7 +262,7 @@ footer {
 
           <a href="specialcakes.html">Specialty Cakes</a>
           <a href="cheesecake.html">Cheesecake</a>
-          <a href="cupcakes.html">Cupcakes</a>
+          <a href="cupcake.html">Cupcake</a>
           <a href="tiramisu.html">Tiramisu</a>
           <a href="bentocakes.html">Bento Cakes</a>
           <a href="brunch.html">Brunch Box</a>
@@ -288,7 +272,7 @@ footer {
     </div>
   </div>
   
-  <a href="contact.html" class="w3-bar-item w3-button"><strong><i class="fa fa-phone"></i>&nbsp;  Contact us</strong></a>
+  <a href="contact.html" class="w3-bar-item w3-button"><strong><i class="fa fa-phone"></i>&nbsp;  Contact</strong></a>
   <div>
 </div>
 </div>
@@ -296,67 +280,25 @@ footer {
 
 
 
+
+
 <div>
 <div class="w3-container w3-animate-left  w3-center">
   <br>
- <h4 style="color:#f62fc4;"><strong>Welcome to Sweet Dazzle Treatz</strong><br>- Put some dazzle in your life!</h4>
+ <h3 style="color:#f62fc4;"><strong>Pastries & Breads Order Form</strong></h3>
 </div>
 </div>
 
-
-
-<!--Email & whatsapp -->
-<div>
-<p style="background-color: #fffff; font-size: 12px">
-<div class="social-media" style="color: #8068d6; justify-content: right;">
-                        
-            <a href="https://www.facebook.com/sweetdazzletreatz" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/sweet_dazzle_treatz" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/18683899249" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
-            &nbsp; 
-            &nbsp; &nbsp;
-            </div>  
- </p>
-</div>
 
 <!-- Start Content -->
-<div id="home" class="w3-content">
-
-<!-- Image in Display Container -->
-
-<div class="w3-padding-top-48">
-<div class="w3-display-container" style="border-radius:10px; border: 4px none;">
-
-<!-- Slides -->
-
-<img class="slides" src="image/slide1.jpeg" width="100%" height="800px" alt="birthday cake" >
-<img class="slides" src="image/slide3.png" width="100%" height="800px" alt="celebratory cakes: weddings,anniversary">
-<img class="slides" src="image/slide2.jpeg" width="100%" height="800px" alt="birthday cake">
-<img class="slides" src="image/slide4.png" width="100%" height="800px" alt="pastries-tarts, bread, sweet bread, tuna puffs ">
-<img class="slides" src="image/slide3.jpeg" width="100%" height="800px" alt="birthday cake">
-<img class="slides" src="image/slide5.png" width="100%" height="800px" alt="wedding cake">
-
-<img class="slides" src="image/slide4.jpg" width="100%" height="800px" alt="brunch box, pastries, corissant">
-<img class="slides" src="image/slide1.png" width="100%" height="800px" alt="cupcakes,wedding cakes">
-<img class="slides" src="image/slide5.jpg" width="100%" height="800px" alt="wedding cake, cake pop, trifle, cupcakes">
-<img class="slides" src="image/slide7.png" width="100%" height="800px" alt="tiramisu">
-<img class="slides" src="image/slide6.jpg" width="100%" height="800px" alt="wedding display, cupcakes, desserts">
-<img class="slides" src="image/slide6.png" width="100%" height="800px"alt="cheesecake">
-<img class="slides" src="image/ccakes.png" width="100%" height="800px"alt="mini cheesecake, bento cakes, cupcakes">
-<!--Slideshow -->
-<script>
-w3.slideshow(".slides", 5000);
-</script>
-
-</div>
-</div>
-</div>
+<div id="cupcake" class="w3-content">
 
 
 
- <!-- Footer -->
+<!-- Footer -->
 <footer >
-<div class="w3-container  w3-center" style="background-color: white; border-radius: 10px;">
+  
+<div class="w3-container  w3-center" style="background-color: papayawhip; border-radius: 10px;">
   <br><br>
   <h4 style="text-align: center; color:fuchsia;"><strong>&copy;2024 Sweet Dazzle Treatz</strong></h4>
   <h6 style="text-align: center; color:brown;">All rights reserved</h6>
@@ -371,4 +313,14 @@ w3.slideshow(".slides", 5000);
       </div>
     </footer>
 
+
+
+
+
+
+
+
+
+
+</div>
 </body></html>
